@@ -7,7 +7,7 @@
 
 import Foundation
 
-var toDoList: [[String: Any]] = [["Name" : "Позвонить маме1", "isComplited" : false], ["Name" : "Позвонить маме2", "isComplited" : false], ["Name" : "Позвонить маме", "isComplited" : true]]
+var toDoList: [[String: Any]] = [["Name" : "Позвонить маме1", "isComplited" : false], ["Name" : "Позвонить маме2", "isComplited" : false], ["Name" : "Позвонить маме3", "isComplited" : true], ["Name" : "Позвонить маме4", "isComplited" : false]]
 
 func addItem(nameItem: String, isCompleted: Bool = false) {
     toDoList.append(["Name" : nameItem, "isComplited" : isCompleted])
