@@ -12,9 +12,9 @@ class TableViewController: UITableViewController {
     
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now()  + 0.3) {
-            self.tableView.reloadData()
-        } 
+//        DispatchQueue.main.asyncAfter(deadline: .now()  + 0.3) {
+//            self.tableView.reloadData()
+//        }
     }
     
     @IBAction func pushAddAction(_ sender: Any) {
@@ -67,15 +67,19 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         let currentItem = toDoList[indexPath.row]
+        
         cell.textLabel?.text = currentItem["Name"] as? String
+        
         // Configure the cell...
         if (currentItem["isComplited"] as? Bool) == true {
 //            cell.accessoryType = .checkmark
             cell.imageView?.image = UIImage(named: "check")
         } else {
-            cell.imageView?.image = UIImage(named: "ucheck")
+            cell.imageView?.image = UIImage(named: "uncheck")
         }
         if tableView.isEditing {
             cell.textLabel?.alpha = 0.4
@@ -110,12 +114,12 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if changeState(at: indexPath.row) {
-//            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "check")
-            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "check")
-        } else {
+        if !(changeState(at: indexPath.row)) {
 //            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "uncheck")
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "uncheck")
+        } else {
+//            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "check")
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "check")
         }
 //        tableView.reloadData()
     }
@@ -127,18 +131,18 @@ class TableViewController: UITableViewController {
     }
 
     // появляется ли "-" при нажатии на edit
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if tableView.isEditing {
-            return .none
-        } else {
-            return.delete
-        }
-    }
-    
-    // нужно ли нам смещать ячейку во время редактирования
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        if tableView.isEditing {
+//            return .none
+//        } else {
+//            return .delete
+//        }
+//    }
+//
+//    // нужно ли нам смещать ячейку во время редактирования
+//    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
     
     /*
     // Override to support conditional rearranging of the table view.
