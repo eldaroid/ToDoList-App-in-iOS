@@ -73,9 +73,9 @@ class TableViewController: UITableViewController {
         // Configure the cell...
         if (currentItem["isComplited"] as? Bool) == true {
 //            cell.accessoryType = .checkmark
-            cell.imageView?.image = UIImage(named: "checked")
+            cell.imageView?.image = UIImage(named: "check")
         } else {
-            cell.imageView?.image = UIImage(named: "uchecked")
+            cell.imageView?.image = UIImage(named: "ucheck")
         }
         if tableView.isEditing {
             cell.textLabel?.alpha = 0.4
@@ -111,11 +111,11 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "checked")
-//            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "checked")
+//            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "check")
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "check")
         } else {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "unchecked")
-//            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "unchecked")
+//            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "uncheck")
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "uncheck")
         }
 //        tableView.reloadData()
     }
