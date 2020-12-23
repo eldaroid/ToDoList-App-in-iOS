@@ -95,9 +95,11 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "checked")
+            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "checked")
+//            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "checked")
         } else {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "unchecked")
+            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "unchecked")
+//            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "unchecked")
         }
 //        tableView.reloadData()
     }
