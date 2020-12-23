@@ -56,7 +56,6 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return toDoList.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -64,9 +63,10 @@ class TableViewController: UITableViewController {
         cell.textLabel?.text = currentItem["Name"] as? String
         // Configure the cell...
         if (currentItem["isComplited"] as? Bool) == true {
-            cell.accessoryType = .checkmark
+//            cell.accessoryType = .checkmark
+            cell.imageView?.image = UIImage(named: "checked")
         } else {
-            cell.accessoryType = .none
+            cell.imageView?.image = UIImage(named: "uchecked")
         }
         return cell
     }
@@ -95,16 +95,17 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "checked")
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "unchecked")
         }
 //        tableView.reloadData()
     }
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        moveItem(fromIndex: fromIndexPath.row, to: to.row)
+        tableView.reloadData()
     }
 
     /*

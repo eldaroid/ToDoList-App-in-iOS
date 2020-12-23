@@ -31,6 +31,12 @@ func changeState(at item: Int) -> Bool  {
     return (toDoList[item]["isComplited"] as! Bool)
 }
 
+func moveItem(fromIndex: Int, to: Int) {
+    let from = toDoList[fromIndex]
+    toDoList.remove(at: fromIndex)
+    toDoList.insert(from, at: to)
+}
+
 func removeItem(at index: Int) {
     toDoList.remove(at: index)
 }
