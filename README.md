@@ -9,6 +9,5 @@
 
 1
 
-1
+![ToDoList](https://user-images.githubusercontent.com/50487976/103093483-7d8e6280-460b-11eb-94e3-b9f1c909f304.gif)
 
-![ToDoList](https://user-images.githubusercontent.com/50487976/103092204-93018d80-4607-11eb-9081-dbf2b290ed85.gif) ne
